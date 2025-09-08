@@ -1,190 +1,110 @@
-<!doctype html>
-<html lang="zh">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TommySir· 会计与税务顾问</title>
-  <meta name="description" content="专业会计与税务顾问，可靠、高效、透明。" />
-  <style>
-    :root{
-      --bg-dark:#0b0f14;
-      --brand:#d74f2a;
-      --card:#0f151cdd;
-      --text:#f5f7fa;
-      --muted:#c8d1dc;
-      --radius:18px;
-      --gap:24px;
-      --container:1200px;
-      /* === Sound Toggle Button === */
-.sound-toggle {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  z-index: 5;
-  background: rgba(0,0,0,0.6);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 14px;
-  cursor: pointer;
-}
-.sound-toggle:hover {
-  background: rgba(0,0,0,0.8);
-}
+<style>
+  /* === Insurance background + transparent header/gap === */
+  body {
+    margin:0; padding:0; background:none !important;
+  }
+  body::before{
+    content:""; position:fixed; inset:0;
+    background:url('https://www.taeasla.com/image/office2.png') center/cover no-repeat fixed;
+    z-index:-1;
+  }
+  header,.journal-header-default,.journal-header-center,.journal-top-bar,
+  .extended-container,.content-top { background:transparent !important; }
 
+  /* === Centered content block === */
+  /* === Shift Chinese section up by ~5cm === */
+  .link-container{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:25px;
+    min-height:120vh;
+    text-align:center;
+    padding:2rem 1rem;
+    position:relative;
+    margin-top:-190px; /* move block up by ~5cm */
+  }
+
+  /* Title button/link */
+  .link-container a.title-link{
+    font-size:1.8rem; font-weight:800; color:#fff; text-decoration:none;
+    background:rgba(0,0,0,0.6); padding:14px 28px; border-radius:12px;
+    box-shadow:0 8px 22px rgba(0,0,0,.35); transition:all .3s;
+  }
+  .link-container a.title-link:hover{
+    background:rgb(182,146,46); color:#000;
+  }
+
+  /* Images (responsive) */
+  .link-container img{
+    max-width:900px; width:100%; height:auto; border-radius:15px;
+    box-shadow:0 10px 28px rgba(0,0,0,.6); display:block;
+  }
+  .link-container img.top-photo{ max-width:600px; }
+
+  /* Heygen rectangular embed inside image container (bottom-right) */
+  #heygen-streaming-embed{
+    position:absolute; bottom:10px; right:10px;
+    width:320px; height:180px;  /* widescreen rectangle */
+    border-radius:8px; overflow:hidden;
+    box-shadow:0 6px 20px rgba(0,0,0,.35);
+    background:#000; z-index:99;
+  }
+  #heygen-streaming-embed iframe{
+    width:100%; height:100%; border:0;
+  }
+  @media(max-width:540px){
+    #heygen-streaming-embed{ width:240px; height:135px; }
+  }
+</style>
+
+<script>
+/* === Journal menu dropdown patch (dark dropdowns) === */
+(function(){
+  const CSS = `
+    body.information-page .super-menu > li > ul,
+    body.information-page .super-menu ul.sub-menu,
+    body.information-page .super-menu ul,
+    body.information-page .super-menu > li:hover > ul,
+    body.information-page .journal-menu .super-menu > li > ul{
+      background:#000 !important; border:none !important;
+      box-shadow:0 4px 15px rgba(0,0,0,.4) !important;
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0; font-family:"Microsoft YaHei",system-ui,sans-serif;
-      color:var(--text); background:var(--bg-dark);
+    body.information-page .super-menu > li > ul > li > a,
+    body.information-page .super-menu ul.sub-menu > li > a{
+      color:#fff !important; display:block; padding:8px 15px;
     }
-    a{color:inherit; text-decoration:none}
-    header{
-      position:fixed; top:0; left:0; right:0; z-index:20;
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 22px; background:linear-gradient(180deg,#0b0f14cc,#0b0f1400);
-      border-bottom:1px solid #ffffff12; backdrop-filter:saturate(160%) blur(8px);
+    body.information-page .super-menu > li > ul > li > a:hover,
+    body.information-page .super-menu ul.sub-menu > li > a:hover{
+      color:rgb(182,146,46) !important;
+      background-color:rgba(255,255,255,.1) !important;
     }
-    .brand{display:flex; gap:10px; align-items:center; font-weight:700}
-    .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--brand)}
-    .nav a{margin-left:16px; opacity:.85}
-    .cta{background:var(--brand);color:#fff;padding:10px 16px;border-radius:999px;font-weight:700}
-    .hero{position:relative;min-height:86vh;display:grid;place-items:center;overflow:hidden}
-    .hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.72)}
-    .hero .poster{display:none}
-    .hero .content{position:relative;z-index:2;max-width:var(--container);padding:100px 20px 40px}
-    h1{font-size:clamp(32px,6vw,60px);margin:0 0 14px}
-    .sub{font-size:18px;color:var(--muted);max-width:800px}
-    .hero-cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
-    .btn{background:#fff;color:#000;padding:12px 18px;border-radius:12px;font-weight:700}
-    .btn.alt{background:transparent;color:#fff;border:1px solid #fff6}
-    .section{max-width:var(--container);margin:0 auto;padding:60px 20px}
-    .cards{display:grid;gap:var(--gap);grid-template-columns:repeat(12,1fr)}
-    .card{grid-column:span 6;background:var(--card);border:1px solid #ffffff12;border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
-    .card img{width:100%;height:240px;object-fit:cover}
-    .card .pad{padding:18px}
-    .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#b9c3cf}
-    .card h3{margin:8px 0 6px;font-size:20px}
-    .card p{margin:0;color:#cfd8e3}
-    @media(min-width:1100px){.card{grid-column:span 4}.card img{height:220px}}
-    @media(max-width:768px){
-      .nav{display:none}
-      .hero .poster{display:block}
-      .hero video{display:none}
-      .cards{grid-template-columns:1fr}
-      .card{grid-column:1/-1}
-    }
-    footer{border-top:1px solid #ffffff12;color:#b6c1cd;font-size:14px;padding:30px 20px 60px;text-align:center}
-  </style>
-</head>
-<body>
-  <!-- Header -->
-  <header>
-    <div class="brand"><span class="dot"></span><span>TommySir · 会计与税务顾问</span></div>
-    <nav class="nav">
-      <a href="#services">服务</a>
-      <a href="#insights">洞见</a>
-      <a href="#contact">联系我们</a>
-    </nav>
-    <a class="cta" href="#contact">预约咨询</a>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero">
-    <video id="heroVid"
-  src="https://raw.githubusercontent.com/TommyTam2012/accountant_demo/main/Hero.mp4"
-  autoplay muted loop playsinline preload="metadata"
-  poster="https://raw.githubusercontent.com/TommyTam2012/accountant_demo/main/Tax.png">
-</video>
-<!-- Sound toggle button -->
-<button id="soundBtn" class="sound-toggle">🔊 打开声音</button>
-
-    <img class="poster" src="https://raw.githubusercontent.com/TommyTam2012/accountant_demo/main/Tax.png" alt="税务顾问" />
-    <div class="content">
-      <div class="eyebrow">专业 · 精准 · 合规</div>
-      <h1>现代企业的<br/>会计与税务顾问</h1>
-      <p class="sub">从记账与报表，到合规申报与战略规划，我们让财务变得清晰可见、可执行、可审核。</p>
-      <div class="hero-cta">
-        <a class="btn" href="#services">查看服务</a>
-        <a class="btn alt" href="#contact">联系我们</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section id="services" class="section">
-    <div class="eyebrow">服务</div>
-    <h2>我们的专业领域</h2>
-    <div class="cards">
-      <article class="card">
-        <img src="https://raw.githubusercontent.com/TommyTam2012/accountant_demo/main/Tax1.png" alt="企业税务筹划" />
-        <div class="pad">
-          <h3>企业税务筹划</h3>
-          <p>优化企业架构，降低风险，确保合规的同时实现合理节税。</p>
-        </div>
-      </article>
-      <article class="card">
-        <img src="https://raw.githubusercontent.com/TommyTam2012/accountant_demo/main/Tax2.png" alt="财务报表" />
-        <div class="pad">
-          <h3>财务报表</h3>
-          <p>提供准确的月度结算、管理报告及审计所需文件。</p>
-        </div>
-      </article>
-      <article class="card">
-        <img src="https://raw.githubusercontent.com/TommyTam2012/accountant_demo/main/Tax3.png" alt="薪酬与合规" />
-        <div class="pad">
-          <h3>薪酬与合规</h3>
-          <p>提供完整的工资发放、申报和福利处理服务，跨地区无忧。</p>
-        </div>
-      </article>
-      <article class="card">
-        <img src="https://raw.githubusercontent.com/TommyTam2012/accountant_demo/main/Tax4.png" alt="咨询与预测" />
-        <div class="pad">
-          <h3>咨询与预测</h3>
-          <p>现金流建模、预算规划及关键指标分析，助力企业决策。</p>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- Insights -->
-  <section id="insights" class="section">
-    <div class="eyebrow">洞见</div>
-    <h2>最新资讯</h2>
-    <p style="color:#cfd8e3;max-width:800px">
-      在此发布实用内容，例如：税务截止日期、政策变化、客户清单与操作指南。
-    </p>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="section">
-    <div class="eyebrow">联系我们</div>
-    <h2>留下您的信息</h2>
-    <p style="color:#cfd8e3;max-width:800px">请简单告诉我们您的需求，我们将在1个工作日内回复。</p>
-    <form action="https://formspree.io/f/your-id" method="POST" style="margin-top:18px;max-width:720px;display:grid;gap:14px">
-      <input name="name" placeholder="您的姓名" required
-             style="padding:12px 14px;border-radius:10px;border:1px solid #ffffff22;background:#0f151c;color:#fff" />
-      <input name="email" type="email" placeholder="电子邮箱" required
-             style="padding:12px 14px;border-radius:10px;border:1px solid #ffffff22;background:#0f151c;color:#fff" />
-      <textarea name="message" rows="5" placeholder="请输入您的需求"
-                style="padding:12px 14px;border-radius:10px;border:1px solid #ffffff22;background:#0f151c;color:#fff"></textarea>
-      <button class="cta" type="submit">发送</button>
-    </form>
-  </section>
-
-  <footer>
-    © <span id="y"></span> TAEASLA · 会计与税务顾问 — 版权所有
-  </footer>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
-  <script>
-  const v = document.getElementById('heroVid');
-  const b = document.getElementById('soundBtn');
-  b.onclick = () => {
-    v.muted = !v.muted;
-    b.textContent = v.muted ? "🔇 打开声音" : "🔊 关闭声音";
-    if (!v.muted) v.play(); // ensure playback continues
-  };
+  `;
+  function injectOnce(){
+    if(document.getElementById('ven-force-dropdown')) return;
+    const tag=document.createElement('style'); tag.id='ven-force-dropdown'; tag.type='text/css';
+    tag.appendChild(document.createTextNode(CSS)); document.head.appendChild(tag);
+  }
+  document.addEventListener('DOMContentLoaded', injectOnce);
+  window.addEventListener('load', ()=>{
+    injectOnce(); setTimeout(injectOnce,400); setTimeout(injectOnce,1200);
+  });
+  const obs=new MutationObserver(injectOnce);
+  obs.observe(document.documentElement,{childList:true,subtree:true});
+})();
 </script>
-</body>
-</html>
+
+<!-- === Content === -->
+<div class="link-container">
+  <a class="title-link" href="https://accountant-demo.vercel.app" target="_blank" rel="noopener">
+    TommySir 會計顧問<br>
+    <img src="https://www.taeasla.com/image/accountant_demo.png" alt="Accountant Demo" class="top-photo">
+    <br>請點這裡
+  </a>
+
+  <!-- Heygen Chatbot Embed inside image container -->
+  <div id="heygen-streaming-embed">
+    <iframe src="https://labs.heygen.com/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJlMzA1NDViNDgwNGM0YzhmYTM4NDg3YjVi%0AZTJkNmQ1YyIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3Yz%0AL2UzMDU0NWI0ODA0YzRjOGZhMzg0ODdiNWJlMmQ2ZDVjL2Z1bGwvMi4yL3ByZXZpZXdfdGFyZ2V0%0ALndlYnAiLCJuZWVkUmVtb3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6IjU0%0ANjU4MTFmZDg0YjQ2M2Y5Mzg0Mzk5OWM3ZDg1NjE1IiwidXNlcm5hbWUiOiJlNTFlZmYzZjJhYzA0%0AZGZjYjQ3MGQzNmM2OWRiMWNlNiJ9&amp;inIFrame=1" allow="microphone"></iframe>
+  </div>
+</div>
