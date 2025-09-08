@@ -1,1 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TAEASLA · Accounting & Tax Advisory</title>
+  <meta name="description" content="Professional accounting and tax advisory. Reliable. Efficient. Transparent." />
+  <style>
+    :root{
+      --bg-dark:#0b0f14;
+      --ink:#0e1116;
+      --ink-2:#1b2430;
+      --ink-3:#2c3a4a;
+      --brand:#d74f2a;    /* warm accent (PwC-ish vibe) */
+      --card:#0f151cdd;   /* translucent card */
+      --text:#f5f7fa;
+      --muted:#c8d1dc;
+      --radius:18px;
+      --gap:24px;
+      --container:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--text); background:var(--bg-dark);
+    }
+    a{color:inherit}
+    /* ====== Header ====== */
+    header{
+      position:fixed; top:0; left:0; right:0; z-index:20;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 22px; backdrop-filter:saturate(160%) blur(8px);
+      background:linear-gradient(180deg, #0b0f14cc, #0b0f1400);
+      border-bottom:1px solid #ffffff12;
+    }
+    .brand{display:flex; gap:10px; align-items:center; font-weight:700; letter-spacing:.2px}
+    .brand .dot{width:10px; height:10px; border-radius:50%; background:var(--brand)}
+    .nav a{opacity:.85; text-decoration:none; margin-left:16px}
+    .cta{
+      background:var(--brand); color:white; border:none; padding:10px 16px; border-radius:999px;
+      font-weight:700; cursor:pointer;
+    }
+    /* ====== Hero ====== */
+    .hero{
+      position:relative; min-height:86vh; display:grid; place-items:center; overflow:hidden;
+    }
+    .hero video, .hero .poster{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.72) contrast(1.02);
+    }
+    .hero .poster{display:none}
+    .hero .content{
+      position:relative; z-index:2; max-width:var(--container); padding:100px 20px 40px;
+      text-align:left; width:100%;
+    }
+    h1{font-size:clamp(36px, 6vw, 64px); line-height:1.05; margin:0 0 14px}
+    .sub{font-size:clamp(16px, 2.2vw, 20px); color:var(--muted); max-width:800px}
+    .hero-cta{margin-top:26px; display:flex; gap:12px; flex-wrap:wrap}
+    .btn{
+      background:#ffffff; color:#0c1117; border:none; padding:12px 18px; border-radius:12px;
+      font-weight:700; cursor:pointer; text-decoration:none; display:inline-block;
+    }
+    .btn.alt{background:transparent; color:#fff; border:1px solid #ffffff55}
+    /* ====== Sections ====== */
+    .section{max-width:var(--container); margin:0 auto; padding:60px 20px}
+    .cards{
+      display:grid; gap:var(--gap);
+      grid-template-columns:repeat(12, 1fr);
+    }
+    .card{
+      grid-column:span 6; background:var(--card); border:1px solid #ffffff12; border-radius:var(--radius);
+      overflow:hidden; display:flex; flex-direction:column;
+    }
+    .card img{width:100%; height:240px; object-fit:cover}
+    .card .pad{padding:18px}
+    .eyebrow{font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#b9c3cf}
+    .card h3{margin:8px 0 6px; font-size:20px}
+    .card p{margin:0; color:#cfd8e3}
+    /* 3-up on wide */
+    @media(min-width:1100px){
+      .card{grid-column:span 4}
+      .card img{height:220px}
+    }
+    /* Mobile tweaks */
+    @media(max-width:768px){
+      header{padding:12px 16px}
+      .nav{display:none}
+      .hero{min-height:80vh}
+      .hero .poster{display:block}
+      .hero video{display:none} /* save bandwidth on phones */
+      .cards{grid-template-columns:1fr}
+      .card{grid-column:1/-1}
+    }
+    /* ====== Footer ====== */
+    footer{
+      border-top:1px solid #ffffff12; color:#b6c1cd; font-size:14px;
+      padding:30px 20px 60px; text-align:center; background:linear-gradient(0deg,#0b0f14, #0b0f1400);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <span class="dot"></span>
+      <span>TAEASLA · Accounting & Tax</span>
+    </div>
+    <nav class="nav">
+      <a href="#services">Services</a>
+      <a href="#insights">Insights</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="cta" href="#contact">Get Consultation</a>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" aria-label="Hero">
+    <!-- Video background -->
+    <video
+      src="https://raw.githubusercontent.com/TommyTam2012/accountant_demo/main/Hero.mp4"
+      autoplay muted loop playsinline preload="metadata"
+      poster="https://raw.githubusercontent.com/TommyTam2012/accountant_demo/main/Tax.png">
+    </video>
+    <!-- Mobile poster fallback (saves data) -->
+    <img class="poster" alt="Accounting & Tax Advisory"
+         src="https://raw.githubusercontent.com/TommyTam2012/accountant_demo/main/Tax.png" />
+
+    <div class="content">
+      <div class="eyebrow">Professional · Precise · Compliant</div>
+      <h1>Accounting & Tax Advisory<br/>for Modern Businesses</h1>
+      <p class="sub">From bookkeeping and compliance to strategy and filings—we make finance clear, actionable, and audit-ready.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#services">Explore Services</a>
+        <a class="btn alt" href="#contact">Book a Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services / Cards -->
+  <section id="services" class="section" aria-label="Services">
+    <div class="eyebrow">Services</div>
+    <h2 style="margin:6px 0 18px; font-size:32px;">What We Do</h2>
+
+    <div class="cards">
+      <article class="card">
+        <img src="https://raw.githubusercontent.com/TommyTam2012/accountant_demo/main/Tax1.png" alt="Corporate Tax Planning" />
+        <div class="pad">
+          <h3>Corporate Tax Planning</h3>
+          <p>Optimize your structure and reduce risk with compliant strategies tailored to your market.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://raw.githubusercontent.com/TommyTam2012/accountant_demo/main/Tax2.png" alt="Financial Statements" />
+        <div class="pad">
+          <h3>Financial Statements</h3>
+          <p>Accurate monthly closes, management reports, and audit-ready documentation.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://raw.githubusercontent.com/TommyTam2012/accountant_demo/main/Tax3.png" alt="Payroll & Compliance" />
+        <div class="pad">
+          <h3>Payroll & Compliance</h3>
+          <p>End-to-end payroll, filings, and benefits handling across jurisdictions.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://raw.githubusercontent.com/TommyTam2012/accountant_demo/main/Tax4.png" alt="Advisory & Forecasting" />
+        <div class="pad">
+          <h3>Advisory & Forecasting</h3>
+          <p>Cash flow modeling, budget planning, and KPI dashboards for decision-makers.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Insights (placeholder) -->
+  <section id="insights" class="section" aria-label="Insights">
+    <div class="eyebrow">Insights</div>
+    <h2 style="margin:6px 0 18px; font-size:32px;">Latest Updates</h2>
+    <p style="color:#cfd8e3; max-width:800px">
+      Publish timely notes here—tax deadlines, policy changes, and practical checklists for clients.
+    </p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section" aria-label="Contact">
+    <div class="eyebrow">Contact</div>
+    <h2 style="margin:6px 0 18px; font-size:32px;">Let’s Talk</h2>
+    <p style="color:#cfd8e3; max-width:800px">Tell us briefly about your needs. We’ll get back within 1 business day.</p>
+    <form action="https://formspree.io/f/your-id" method="POST" style="margin-top:18px; max-width:720px; display:grid; gap:14px">
+      <input name="name" placeholder="Your name" required
+             style="padding:12px 14px; border-radius:10px; border:1px solid #ffffff22; background:#0f151c; color:#fff" />
+      <input name="email" type="email" placeholder="Email" required
+             style="padding:12px 14px; border-radius:10px; border:1px solid #ffffff22; background:#0f151c; color:#fff" />
+      <textarea name="message" rows="5" placeholder="How can we help?"
+                style="padding:12px 14px; border-radius:10px; border:1px solid #ffffff22; background:#0f151c; color:#fff"></textarea>
+      <button class="cta" type="submit" style="justify-self:start">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    © <span id="y"></span> TAEASLA · Accounting & Tax Advisory — All rights reserved.
+  </footer>
+
+  <script>
+    // Year stamp
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
 
