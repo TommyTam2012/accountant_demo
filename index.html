@@ -177,5 +177,14 @@
     © <span id="y"></span> TAEASLA · 会计与税务顾问 — 版权所有
   </footer>
   <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  <script>
+  const v = document.getElementById('heroVid');
+  const b = document.getElementById('soundBtn');
+  b.onclick = () => {
+    v.muted = !v.muted;
+    b.textContent = v.muted ? "🔇 打开声音" : "🔊 关闭声音";
+    if (!v.muted) v.play(); // ensure playback continues
+  };
+</script>
 </body>
 </html>
